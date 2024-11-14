@@ -21,6 +21,7 @@ namespace EnergyAPI.Data
             _connection.Close();
         }
 
+        // Método para a procedure sp_insert_usuario
         public void InsertUsuario(string nome, string email, string senha, string cpf)
         {
             using var command = new OracleCommand("sp_insert_usuario", _connection);
@@ -32,6 +33,7 @@ namespace EnergyAPI.Data
             command.ExecuteNonQuery();
         }
 
+        // Método para a procedure sp_insert_dispositivo
         public void InsertDispositivo(int idUsuario, string nomeDispositivo, string tipo, string localizacao)
         {
             using var command = new OracleCommand("sp_insert_dispositivo", _connection);
@@ -43,6 +45,40 @@ namespace EnergyAPI.Data
             command.ExecuteNonQuery();
         }
 
-        // Adicione os outros métodos para as outras stored procedures aqui...
+        // Método para a procedure sp_insert_consumo
+        public void InsertConsumo(int idDispositivo, DateTime dataHora, decimal consumoKwh)
+        {
+            using var command = new OracleCommand("sp_insert_consumo", _connection);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add("p_id_dispositivo", OracleDbType.Int32).Value = idDispositivo;
+            command.Parameters.Add("p_data_hora", OracleDbType.TimeStamp).Value = dataHora;
+            command.Parameters.Add("p_consumo_kwh", OracleDbType.Decimal).Value = consumoKwh;
+            command.ExecuteNonQuery();
+        }
+
+        // Método para a procedure sp_insert_custo_energia
+        public void InsertCustoEnergia(DateTime dataInicio, DateTime dataFim, decimal custoPorKwh)
+        {
+            using var command = new OracleCommand("sp_insert_custo_energia", _connection);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add("p_data_inicio", OracleDbType.Date).Value = dataInicio;
+            command.Parameters.Add("p_data_fim", OracleDbType.Date).Value = dataFim;
+            command.Parameters.Add("p_custo_por_kwh", OracleDbType.Decimal).Value = custoPorKwh;
+            command.ExecuteNonQuery();
+        }
+
+        // Método para a procedure sp_insert_relatorio
+        public void InsertRelatorio(int idUsuario, int idCusto, DateTime periodoInicio, DateTime periodoFim, decimal consumoTotalKwh, decimal custoTotal)
+        {
+            using var command = new OracleCommand("sp_insert_relatorio", _connection);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add("p_id_usuario", OracleDbType.Int32).Value = idUsuario;
+            command.Parameters.Add("p_id_custo", OracleDbType.Int32).Value = idCusto;
+            command.Parameters.Add("p_periodo_inicio", OracleDbType.Date).Value = periodoInicio;
+            command.Parameters.Add("p_periodo_fim", OracleDbType.Date).Value = periodoFim;
+            command.Parameters.Add("p_consumo_total_kwh", OracleDbType.Decimal).Value = consumoTotalKwh;
+            command.Parameters.Add("p_custo_total", OracleDbType.Decimal).Value = custoTotal;
+            command.ExecuteNonQuery();
+        }
     }
 }
