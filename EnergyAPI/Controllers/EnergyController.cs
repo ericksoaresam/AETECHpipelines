@@ -1,6 +1,7 @@
 ﻿using EnergyAPI.Data;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace EnergyAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -48,5 +49,7 @@ namespace EnergyAPI.Controllers
             _dbContext.InsertRelatorio(idUsuario, idCusto, periodoInicio, periodoFim, consumoTotalKwh, custoTotal);
             return Ok("Relatório inserido com sucesso!");
         }
+
+        
     }
 }

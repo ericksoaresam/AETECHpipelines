@@ -3,6 +3,7 @@ using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Data;
 
+
 namespace EnergyAPI.Data
 {
     public class OracleDbContext : IDisposable
@@ -80,5 +81,8 @@ namespace EnergyAPI.Data
             command.Parameters.Add("p_custo_total", OracleDbType.Decimal).Value = custoTotal;
             command.ExecuteNonQuery();
         }
+
+        
+        
     }
 }
