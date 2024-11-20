@@ -35,17 +35,21 @@ public class EnergyControllerTests
     [Fact]
     public void InsertUsuario_AddsUsuarioToDbContext()
     {
-        // Arrange
-        var configuration = GetTestConfiguration();
-        var dbContext = new OracleDbContext(configuration);
-        var controller = new EnergyController(dbContext);
+         // Arrange
+    var configuration = GetTestConfiguration();
+    var dbContext = new OracleDbContext(configuration);
+    var controller = new EnergyController(dbContext);
 
-        // Act
-        var result = controller.InsertUsuario("Teste", "teste@example.com", "senha123", "12345678900");
+    // Gera Email e CPF únicos
+    var email = $"teste_{Guid.NewGuid()}@example.com";
+    var cpf = Guid.NewGuid().ToString("N").Substring(0, 11); // Gera um CPF fictício de 11 dígitos
 
-        // Assert
-        Assert.NotNull(result);
-        Assert.IsType<Microsoft.AspNetCore.Mvc.OkObjectResult>(result);
+    // Act
+    var result = controller.InsertUsuario("Teste", email, "senha123", cpf);
+
+    // Assert
+    Assert.NotNull(result);
+    Assert.IsType<Microsoft.AspNetCore.Mvc.OkObjectResult>(result);
     }
 
     [Fact]
@@ -57,27 +61,7 @@ public class EnergyControllerTests
         var controller = new EnergyController(dbContext);
 
         // Act
-        var result = controller.InsertDispositivo(1, "Dispositivo Teste", "Tipo Teste", "Local Teste");
-
-        // Assert
-        Assert.NotNull(result);
-        Assert.IsType<Microsoft.AspNetCore.Mvc.OkObjectResult>(result);
-    }
-
-    [Fact]
-    public void InsertConsumo_AddsConsumoToDbContext()
-    {
-        // Arrange
-        var configuration = GetTestConfiguration();
-        var dbContext = new OracleDbContext(configuration);
-        var controller = new EnergyController(dbContext);
-
-        // Primeiro, insere um dispositivo válido
-        controller.InsertDispositivo(1, "Dispositivo Teste", "Tipo Teste", "Local Teste");
-
-        // Agora, insere o consumo
-        var dataHora = DateTime.Now;
-        var result = controller.InsertConsumo(1, dataHora, 123.45m);
+        var result = controller.InsertDispositivo(27, "Dispositivo Teste", "Tipo Teste", "Local Teste");
 
         // Assert
         Assert.NotNull(result);

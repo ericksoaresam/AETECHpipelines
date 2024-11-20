@@ -94,6 +94,9 @@ namespace EnergyAPI.Data
             }
         }
 
-
+        public OracleCommand CreateCommand()
+        {
+            return _connection.CreateCommand();
+        }
     }
 }
