@@ -82,7 +82,18 @@ namespace EnergyAPI.Data
             command.ExecuteNonQuery();
         }
 
-        
-        
+        public void TestConnection()
+        {
+            if (_connection.State == ConnectionState.Open)
+            {
+                Console.WriteLine("Conexão bem-sucedida!");
+            }
+            else
+            {
+                throw new Exception("Falha ao conectar ao banco de dados.");
+            }
+        }
+
+
     }
 }

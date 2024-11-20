@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35506.116 d17.12
+VisualStudioVersion = 17.12.35506.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnergyAPI", "EnergyAPI\EnergyAPI.csproj", "{038DD5C5-1524-4ADC-B0E9-F7C5E4FE8CC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnergyAPI.Tests", "EnergyAPI.Tests\EnergyAPI.Tests.csproj", "{04E10369-426B-40E0-AD0D-7410E1C3AFD9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{038DD5C5-1524-4ADC-B0E9-F7C5E4FE8CC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{038DD5C5-1524-4ADC-B0E9-F7C5E4FE8CC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{038DD5C5-1524-4ADC-B0E9-F7C5E4FE8CC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04E10369-426B-40E0-AD0D-7410E1C3AFD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04E10369-426B-40E0-AD0D-7410E1C3AFD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04E10369-426B-40E0-AD0D-7410E1C3AFD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04E10369-426B-40E0-AD0D-7410E1C3AFD9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
