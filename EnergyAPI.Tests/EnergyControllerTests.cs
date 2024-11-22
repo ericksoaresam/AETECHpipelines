@@ -7,12 +7,11 @@ using System.IO;
 
 public class EnergyControllerTests
 {
-    // Método para carregar a configuração do appsettings.json
     private IConfiguration GetTestConfiguration()
     {
         var config = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json") // Certifique-se de que este arquivo está no projeto de testes.
+            .AddJsonFile("appsettings.json") 
             .Build();
 
         return config;
@@ -42,7 +41,7 @@ public class EnergyControllerTests
 
     // Gera Email e CPF únicos
     var email = $"teste_{Guid.NewGuid()}@example.com";
-    var cpf = Guid.NewGuid().ToString("N").Substring(0, 11); // Gera um CPF fictício de 11 dígitos
+    var cpf = Guid.NewGuid().ToString("N").Substring(0, 11); 
 
     // Act
     var result = controller.InsertUsuario("Teste", email, "senha123", cpf);
