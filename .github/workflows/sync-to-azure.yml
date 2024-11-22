@@ -1,0 +1,23 @@
+name: Sync to Azure DevOps
+
+on:
+  push:
+    branches:
+      - main  # Sincroniza sempre que houver push no branch 'main'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Passo 1: Faz o checkout do código do repositório
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Passo 2: Configura o remoto do Azure DevOps e envia as alterações
+      - name: Push to Azure DevOps
+        env:
+          AZURE_DEVOPS_PAT: E4gzIiVlYtIBIHMET4pyaBw7O8c7dsxDBmmUntR2m35F0SzhRLRqJQQJ99AKACAAAAAE8413AAASAZDOWNPv  # Token de acesso pessoal
+        run: |
+          git remote add azure https://dev.azure.com/RM93032/AETECH%20ENERGY/_git/AETECH%20ENERGY
+          git push azure main --force
