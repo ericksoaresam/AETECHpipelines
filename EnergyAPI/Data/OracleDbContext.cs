@@ -3,7 +3,7 @@ using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Data;
 
-
+//conectando banco
 namespace EnergyAPI.Data
 {
     public class OracleDbContext : IDisposable
