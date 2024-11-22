@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Xunit;
 using System;
 using System.IO;
-
+//
 public class EnergyControllerTests
 {
     private IConfiguration GetTestConfiguration()
